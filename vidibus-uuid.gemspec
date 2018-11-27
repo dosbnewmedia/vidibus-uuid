@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "vidibus-uuid"
 
-  s.add_dependency 'mongoid', '>= 3'
+  s.add_dependency 'mongoid', '>= 3'#, '< 5'
   s.add_dependency "uuid", "~> 2.3.1"
 
   s.add_development_dependency "bundler", ">= 1.0.0"
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rdoc"
   s.add_development_dependency "rspec", "~> 2"
   s.add_development_dependency "rr"
+  s.add_development_dependency "simplecov"
 
   s.files        = `git ls-files`.split("\n")
   s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact

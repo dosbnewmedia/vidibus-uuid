@@ -26,14 +26,14 @@ describe Vidibus::Uuid::Validator do
   it "should add an error for invalid UUIDs" do
     model.required_uuid = "ddeb4500668e0"
     model.should be_invalid
-    model.errors[:required_uuid].should have(1).error
+    model.errors[:required_uuid].size.should eq(1)
     model.errors[:required_uuid].first.should eql("is not a valid UUID")
   end
 
   it "should add an error on required_uuid, if empty" do
     model.required_uuid = ''
     model.should be_invalid
-    model.errors[:required_uuid].should have(1).error
+    model.errors[:required_uuid].size.should eq(1)
   end
 
   it "should allow emtpy optional_uuid" do

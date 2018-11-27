@@ -62,14 +62,14 @@ describe "Vidibus::Uuid::Mongoid" do
 
   it "should verify uniqueness of UUID in class" do
     another_model = Model.create(:uuid => model.uuid)
-    another_model.errors[:uuid].should have(1).error
+    another_model.errors[:uuid].size.should eq(1)
   end
 
   it "should verify uniqueness of UUID in embedded documents" do
     first_child = model.children.create!
     second_child = model.children.create!
     second_child.update_attributes(:uuid => first_child.uuid)
-    second_child.errors[:uuid].should have(1).error
+    second_child.errors[:uuid].size.should eq(1)
     model.reload
     model.children[0].uuid.should_not eql(model.children[1].uuid)
   end
